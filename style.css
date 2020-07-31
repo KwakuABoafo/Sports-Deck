@@ -31,7 +31,11 @@ body {
 
 #tonightsLeaders {
     margin-left: 50px;
-    /* border-radius: 5px !important; */
+    margin-bottom: 20px;
+}
+
+#liveBoxScores {
+    margin-left: 50px;
 }
 
 #suggestions{
