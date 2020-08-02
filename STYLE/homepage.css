@@ -1,0 +1,60 @@
+
+
+#navbar > h2 {
+    margin: 0px;
+    margin-left: 50px;
+    width: 100vw;
+    font-size: 48px;
+    font-family: 'Satisfy', cursive;
+}
+
+#navbar {
+    display: flex;
+    background-color: #24292e;
+    height: 8vh;;
+    color: #fff;
+    text-align: left;
+    align-items: center;
+    border-bottom: 5px solid black;
+}
+
+#buttonDisplay {
+    display: flex;;
+    align-items: center;
+    align-content: space-between;
+}
+
+#signup {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 90px;
+}
+
+#login {
+    width: 80px;
+}
+
+#leftSection {
+    height: 92vh;
+    width: 40vw;
+    background-color: #06c;
+    border-right: 5px solid black;
+    display: flex;
+    align-items: center;
+}
+
+#rightSection {
+    height: 92vh;
+    width: 60vw;
+    background-color: white;
+}
+
+#mainView {
+    display: flex;
+    flex-direction: row;
+}
+
+#motto {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}

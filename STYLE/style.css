@@ -44,6 +44,14 @@ body {
     
 }
 
+.card-header {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.list-group-item {
+    height: 50px;
+}
+
 #hamburgerMenu > .bars{
     margin-right: 50px;
     width: 40px;
