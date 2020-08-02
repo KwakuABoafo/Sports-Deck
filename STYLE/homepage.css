@@ -15,7 +15,7 @@
     color: #fff;
     text-align: left;
     align-items: center;
-    border-bottom: 5px solid black;
+    border-bottom: 7px solid #333333;
 }
 
 #buttonDisplay {
@@ -38,7 +38,7 @@
     height: 92vh;
     width: 40vw;
     background-color: #06c;
-    border-right: 5px solid black;
+    border-right: 7px solid #333333;
     display: flex;
     align-items: center;
 }
@@ -57,4 +57,25 @@
 #motto {
     font-family: 'Orbitron', sans-serif;
     text-align: center;
+}
+
+label {
+    color: black;
+}
+
+#logInForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 92vh;
+}
+
+#passwordLogIn {
+    margin-bottom: 60px;
+}
+
+input {
+    height: 50px;
+    width: 200px;
 }

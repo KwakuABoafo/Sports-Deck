@@ -14,6 +14,7 @@ let monthStr = monthsArr[month -1];
 let previousDay = new Date(today.setDate(today.getDate() - 1));
 let previousDayNum = previousDay.getDate(); 
 let dateEndpoint = `${year}-${monthStr}-${previousDayNum}`;
+console.log(dateEndpoint)
 
 // Variables for Tonights Leaders Section
 let points = 0;
@@ -86,7 +87,7 @@ fetch(urlstart + newsEndpoint + key).then(function(response){
         post.style.marginBottom = "20px";
 
     }
-});
+})
 
 
 fetch(urlstart + playerStatsForDate + dateEndpoint + key).then(function(response){
@@ -96,6 +97,7 @@ fetch(urlstart + playerStatsForDate + dateEndpoint + key).then(function(response
         if(data[i].Points > points){
             points = data[i].Points;
             pointsLead = data[i].Name;
+            //console.log(pointsLead)
         }
         if(data[i].Assists > assists){
             assists = data[i].Assists;
