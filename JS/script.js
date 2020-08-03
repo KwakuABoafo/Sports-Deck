@@ -6,15 +6,20 @@ let newsEndpoint = "News";
 let playerStatsForDate = "PlayerGameStatsByDate/";
 
 // gets the date for the endpoint
-let today = new Date();
-let year = today.getFullYear();
-let month = today.getMonth();
-let monthsArr = ["JAN" , "FEB", "MAR", "APR" , "MAY" , "JUN" , "JUL" , "AUG", "SEP" , "OCT", "NOV", "DEV"];
-let monthStr = monthsArr[month -1];
-let previousDay = new Date(today.setDate(today.getDate() - 1));
-let previousDayNum = previousDay.getDate(); 
-let dateEndpoint = `${year}-${monthStr}-${previousDayNum}`;
-console.log(dateEndpoint)
+function setDateEndPoint(){
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = today.getMonth();
+    let monthsArr = ["JAN" , "FEB", "MAR", "APR" , "MAY" , "JUN" , "JUL" , "AUG", "SEP" , "OCT", "NOV", "DEC"];
+    let monthStr = monthsArr[month];
+    let previousDay = new Date(today.setDate(today.getDate() - 1));
+    let previousDayNum = previousDay.getDate(); 
+    let dateEndpoint = `${year}-${monthStr}-${previousDayNum}`;
+    return dateEndpoint;
+}
+
+setInterval(setDateEndPoint , 1000);
+let dateEndpointValue = setDateEndPoint();
 
 // Variables for Tonights Leaders Section
 let points = 0;
@@ -89,15 +94,13 @@ fetch(urlstart + newsEndpoint + key).then(function(response){
     }
 })
 
-
-fetch(urlstart + playerStatsForDate + dateEndpoint + key).then(function(response){
+fetch(urlstart + playerStatsForDate + dateEndpointValue + key).then(function(response){
     return response.json();
 }).then(function(data){
     for(let i = 0; i < data.length -1; i++){
         if(data[i].Points > points){
             points = data[i].Points;
             pointsLead = data[i].Name;
-            //console.log(pointsLead)
         }
         if(data[i].Assists > assists){
             assists = data[i].Assists;
@@ -117,22 +120,11 @@ fetch(urlstart + playerStatsForDate + dateEndpoint + key).then(function(response
         }
     
     }
-    console.log(pointsLead);
-    console.log(assistsLead);
-    console.log(rebsLead);
-    console.log(stealsLead);
-    console.log(blocksLead);
 
-    let PL = document.getElementById("pointsLeader");
-    let AL = document.getElementById("assistsLeader");
-    let RL = document.getElementById("reboundsLeader");
-    let SL = document.getElementById("stealsLeader");
-    let BL = document.getElementById("blocksLeader");
- 
-    PL.innerHTML = pointsLead;
-    AL.innerHTML = assistsLead;
-    RL.innerHTML = rebsLead;
-    SL.innerHTML = stealsLead;
-    BL.innerHTML = blocksLead;
-    
+    // Sets each the nights Stats leaders to a section in the 
+    document.getElementById("pointsLeader").innerHTML = pointsLead;
+    document.getElementById("assistsLeader").innerHTML = assistsLead;
+    document.getElementById("reboundsLeader").innerHTML = rebsLead;
+    document.getElementById("stealsLeader").innerHTML = stealsLead;
+    document.getElementById("blocksLeader").innerHTML = blocksLead;;
 });
