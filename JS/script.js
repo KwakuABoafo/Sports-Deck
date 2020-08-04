@@ -1,4 +1,5 @@
 
+
 //Url and Endpoints
 let urlstart = "https://api.sportsdata.io/v3/nba/stats/json/";
 let key = "?key=04342f2525124fc8967646d8bfc8826e";
@@ -114,8 +115,8 @@ fetch(urlstart + playerStatsForDate + dateEndpointValue + key).then(function(res
             steals = data[i].Steals;
             stealsLead = data[i].Name;
         }
-        if(data[i].Blocks > blocks){
-            blocks = data[i].Blocks;
+        if(data[i].BlockedShots > blocks){
+            blocks = data[i].BlockedShots;
             blocksLead = data[i].Name;
         }
     
