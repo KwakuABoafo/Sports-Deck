@@ -1,5 +1,3 @@
-
-
 //Url and Endpoints
 let urlstart = "https://api.sportsdata.io/v3/nba/stats/json/";
 let key = "?key=04342f2525124fc8967646d8bfc8826e";
@@ -33,6 +31,18 @@ let assistsLead = "";
 let rebsLead = "";
 let stealsLead = "";
 let blocksLead = "";
+
+// Code for getting player images
+let pointsLeaderID = "";
+let assistsLeaderID = "";
+let rebsLeaderID = "";
+let stealsLeaderID = "";
+let blocksLeaderID = "";
+let pointsLeaderImgURL;
+let assistsLeaderImgURL;
+let rebsLeaderImgURL;
+let stealsLeaderImgURL;
+let blocksLeaderImgURL;
 
 
 // this code fetchs sports news (currently only nba news) and populates the feed
@@ -101,23 +111,29 @@ fetch(urlstart + playerStatsForDate + dateEndpointValue + key).then(function(res
     for(let i = 0; i < data.length -1; i++){
         if(data[i].Points > points){
             points = data[i].Points;
-            pointsLead = data[i].Name;
+            pointsLead = data[i].Name + " (Points)";
+            //pointsLeaderID = data[i].PlayerID;
+            //console.log(pointsLeaderID)
         }
         if(data[i].Assists > assists){
             assists = data[i].Assists;
-            assistsLead = data[i].Name;
+            assistsLead = data[i].Name + " (Assists)";
+            //assistsLeaderID += data[i].PlayerID;
         }
         if(data[i].Rebounds > rebounds){
             rebounds = data[i].Rebounds;
-            rebsLead = data[i].Name;
+            rebsLead = data[i].Name + " (Rebounds)";
+            // rebsLeaderID = data[i].PlayerID;
         }
         if(data[i].Steals > steals){
             steals = data[i].Steals;
-            stealsLead = data[i].Name;
+            stealsLead = data[i].Name + " (Steals)";
+            // stealsLeaderID = data[i].PlayerID;
         }
         if(data[i].BlockedShots > blocks){
             blocks = data[i].BlockedShots;
-            blocksLead = data[i].Name;
+            blocksLead = data[i].Name + " (Blocks)";
+            // blocksLeaderID = data[i].PlayerID;
         }
     
     }
@@ -127,5 +143,53 @@ fetch(urlstart + playerStatsForDate + dateEndpointValue + key).then(function(res
     document.getElementById("assistsLeader").innerHTML = assistsLead;
     document.getElementById("reboundsLeader").innerHTML = rebsLead;
     document.getElementById("stealsLeader").innerHTML = stealsLead;
-    document.getElementById("blocksLeader").innerHTML = blocksLead;;
+    document.getElementById("blocksLeader").innerHTML = blocksLead;
 });
+
+
+// function gets the leaders image when given a players ID in the API and then sets it to the variable 
+// respective of the stat in which the player lead
+
+// function fetchLeaderImage(leaderID, leaderImage){
+//     fetch(urlstart + "Player/" + leaderID + key).then(function(response){
+//         return response.json();
+//     }).then(function(data){
+//         leaderImage = data.PhotoUrl;
+//     });
+// }
+
+
+// fetchLeaderImage(pointsLeaderID, pointsLeaderImgURL);
+// fetchLeaderImage(assistsLeaderID, assistsLeaderImgURL);
+// fetchLeaderImage(rebsLeaderID, rebsLeaderImgURL);
+// fetchLeaderImage(stealsLeaderID, stealsLeaderImgURL);
+// fetchLeaderImage(blocksLeaderID, blocksLeaderImgURL);
+
+
+// let pointsLeadImage = document.createElement("img");
+// let assistsLeadImage = document.createElement("img");
+// let rebsLeadImage = document.createElement("img");
+// let stealsLeadImage = document.createElement("img");
+// let blocksLeadImage = document.createElement("img");
+
+// pointsLeadImage.src = pointsLeaderImgURL;
+// assistsLeadImage.src = assistsLeaderImgURL;
+// rebsLeadImage.src = rebsLeaderImgURL;
+// stealsLeadImage.src = stealsLeaderImgURL;
+// blocksLeadImage.src = blocksLeaderImgURL;
+
+// document.getElementById("pointsLeader").appendChild(pointsLeadImage);
+// document.getElementById("assistsLeader").appendChild(assistsLeadImage);
+// document.getElementById("reboundsLeader").appendChild(rebsLeadImage);
+// document.getElementById("stealsLeader").appendChild(stealsLeadImage);
+// document.getElementById("blocksLeader").appendChild(blocksLeadImage);
+
+
+
+
+
+
+
+
+
+
